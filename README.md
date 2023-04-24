@@ -1,6 +1,7 @@
 # Bedrock-Scripts
 
-[![Licencia](https://img.shields.io/badge/Licencia-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Sígueme en Twitter](https://img.shields.io/twitter/follow/convex__?style=social)](https://twitter.com/convex__)
+ [![Licencia](https://img.shields.io/badge/Licencia-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 # ¿Qué contiene el repositorio?
 Aqui encontraras scripts para minecraft bedrock usando Minecraft Scripting API, se iran añadiendo a futuro distintas funcionalidades, solo se encontrara el codigo .js por lo que ya deberias de tener algun minimo conocimiento previo para poderlo incluir en tu add-on o script.
