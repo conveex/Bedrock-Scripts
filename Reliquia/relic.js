@@ -1,7 +1,7 @@
 import { system, world, ItemStack } from "@minecraft/server";
 
-//Este codigo fue creado por Convex, tw: https://twitter.com/convex__ ; discord: @convecs#6207 y esta bajo la licencia MIT, esta permitido su uso comercial o privado siempre que se incluyan los creditos del creador.
-//Funciona para la creacion de una reliquia que libera slots del inventario bloqueados, debajo estan las especificaciones de cada variable, modifica a las necesidades de tu relquia, cualquier duda contacta con Convex.
+// Este codigo fue creado por Convex, tw: https://twitter.com/convex__ ; discord: @convecs#6207 y esta bajo la licencia MIT, esta permitido su uso comercial o privado siempre que se incluyan los creditos del creador.
+// Funciona para la creacion de una reliquia que libera slots del inventario bloqueados, debajo estan las especificaciones de cada variable, modifica a las necesidades de tu relquia, cualquier duda contacta con Convex.
 
 const relic = "minecraft:apple";    //Identificador del item que funcionara como tu reliquia.
 const lock = "minecraft:barrier";   //Identificador del item que funcionara como bloqueo de slot.
