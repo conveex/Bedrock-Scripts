@@ -26,8 +26,9 @@ system.runInterval((loops) => {
         let inventory = player.getComponent("inventory").container;
         let dim = player.dimension;
         let itemLock = new ItemStack(lock);
+        const viewDirection = player.getViewDirection();
         itemLock.lockMode = 'slot';
-        let pblock = world.getDimension("overworld").getBlock({ x: player.location.x, y: player.location.y, z: player.location.z });
+        let pblock = world.getDimension("overworld").getBlock({ x: player.getHeadLocation().x, y: player.getHeadLocation().y, z: player.getHeadLocation().z });
         const itemLockData = { "item_lock": { "mode": "lock_in_slot" } };
         if (searchInventory(relic, player)) {
             player.runCommandAsync(`clear @s ${lock.replace(/"/g, '')}`);
@@ -36,7 +37,8 @@ system.runInterval((loops) => {
                 if (lockedSlots.includes(i)) {
                     let item = inventory.getItem(i);
                     if (item != undefined && item.typeId != lock) {
-                        dim.spawnItem(item, pblock);
+                        let newItem = dim.spawnItem(item, pblock);
+                        newItem.applyImpulse({x: viewDirection.x * 0.18, y: viewDirection.y * 0.18, z: viewDirection.z * 0.18});
                         inventory.setItem(i, itemLock);
                     } else if (item == undefined) {
                         inventory.setItem(i, itemLock);
@@ -45,7 +47,7 @@ system.runInterval((loops) => {
             }
             if (setOffHand) {
                 for (const offHandItem of offHandItems) {
-                    checkOffHand(player, offHandItem.itemOffHand, itemLockData, pblock, dim, offHandItem.itemTypeId);
+                    checkOffHand(player, offHandItem.itemOffHand, itemLockData, pblock, dim, offHandItem.itemTypeId, viewDirection);
                 }
             }
         }
@@ -63,12 +65,13 @@ function searchInventory(itemSearch, player) {
     } return false;
 }
 
-async function checkOffHand(player, itemOffHand, itemLockData, pblock, dim, itemTypeId) {
+async function checkOffHand(player, itemOffHand, itemLockData, pblock, dim, itemTypeId, viewDirection) {
     const hasItem = await checkCommand(`execute as ${player.name} run testfor @s[hasitem={item=${itemOffHand},location=slot.weapon.offhand}]`);
     if (hasItem) {
         player.runCommandAsync(`replaceitem entity @s slot.weapon.offhand 0 ${lock.replace(/"/g, '')} 1 0 ${JSON.stringify(itemLockData)}`);
         const itemStack = new ItemStack(itemTypeId);
-        dim.spawnItem(itemStack, pblock);
+        let newItem = dim.spawnItem(itemStack, pblock);
+        newItem.applyImpulse({x: viewDirection.x * 0.18, y: viewDirection.y * 0.18, z: viewDirection.z * 0.18});
     } else {
         player.runCommandAsync(`replaceitem entity @s slot.weapon.offhand 0 ${lock.replace(/"/g, '')} 1 0 ${JSON.stringify(itemLockData)}`);
     }
