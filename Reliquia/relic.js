@@ -85,4 +85,4 @@ function checkCommand(args) {
             resolve(false);
         });
     });
-}
+} 
