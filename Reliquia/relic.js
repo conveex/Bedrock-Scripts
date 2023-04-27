@@ -31,7 +31,6 @@ system.runInterval((loops) => {
         const viewDirection = player.getViewDirection();
         itemLock.lockMode = 'slot';
         let pblock = world.getDimension("overworld").getBlock({ x: player.getHeadLocation().x, y: player.getHeadLocation().y, z: player.getHeadLocation().z });
-        const itemLockData = { "item_lock": { "mode": "lock_in_slot" } };
         if (searchInventory(relic, player)) {
             player.runCommandAsync(`clear @s ${lock.replace(/"/g, '')}`);
             for (let j = 0; j < equipmentLock.length; j++) {
