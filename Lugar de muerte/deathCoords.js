@@ -30,5 +30,5 @@ function sendDeathMessage(player) {
             dimensionName = dimensionNames[3];
             break;
     }
-    world.getDimension("overworld").runCommandAsync(`tellraw @a {"rawtext":[{"text":"${msgColor}${player.name} ${deathMsg} x: ${Math.floor(player.location.x)} y: ${Math.floor(player.location.y)} z: ${Math.floor(player.location.z)}. ${dimMsg} ${dimensionName}"}]}`);
+    player.sendMessage(`${msgColor}${player.name} ${deathMsg} x: ${Math.floor(player.location.x)} y: ${Math.floor(player.location.y)} z: ${Math.floor(player.location.z)}. ${dimMsg} ${dimensionName}`);
 }
