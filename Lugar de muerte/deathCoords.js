@@ -8,7 +8,7 @@ const dimMsg = "Dimension:"; //Puedes modificar este valor para personalizar com
 const msgColor = "§7"; //Puedes modificar este valor para personalizar como sale el color del mensaje de muerte.
 const dimensionNames = ["§aOverworld§r", "§cNether§r", "§dThe End§r", "§7Unknown dimension§r"]; //Puedes modificar estos valores para personalizar como saldra el nombre de cada dimension al morir.
 
-world.events.entityDie.subscribe(data => {
+world.afterEvents.entityDie.subscribe(data => {
     const entity = data.deadEntity;
     if (entity.typeId != 'minecraft:player') return;
     sendDeathMessage(entity);
